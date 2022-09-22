@@ -1,0 +1,91 @@
+{
+    'accounts':
+    [
+        {'v': 2, 'key': {'_id': 1}, 'name': '_id_'}, 
+        {'v': 2, 'key': {'_id': 1}, 'name': '_id_'}, 
+        {'v': 2, 'key': {'birthdate': 1, 'active': 1}, 'name': 'birthdate_1_active_1'}, 
+        {'v': 2, 'key': {'username': 1}, 'name': 'username_1'}, 
+        {'v': 2, 'key': {'name': 1}, 'name': 'name_1'}, 
+        {'v': 2, 'key': {'_id': 1}, 'name': '_id_'}, 
+        {'v': 2, 'key': {'account_id': 1}, 'name': 'account_id_1'}, 
+        {'v': 2, 'key': {'transaction_count': 1}, 'name': 'transaction_count_1'}, 
+        {'v': 2, 'key': {'transaction_count': 1, 'transactions': 1}, 'name': 'transaction_count_1_transactions_1'}
+    ], 
+    'customers': 
+        [
+            {'v': 2, 'key': {'_id': 1}, 'name': '_id_'}, 
+            {'v': 2, 'key': {'_id': 1}, 'name': '_id_'}, 
+            {'v': 2, 'key': {'birthdate': 1, 'active': 1}, 'name': 'birthdate_1_active_1'}, 
+            {'v': 2, 'key': {'username': 1}, 'name': 'username_1'}, 
+            {'v': 2, 'key': {'name': 1}, 'name': 'name_1'}, 
+            {'v': 2, 'key': {'_id': 1}, 'name': '_id_'}, 
+            {'v': 2, 'key': {'account_id': 1}, 'name': 'account_id_1'}, 
+            {'v': 2, 'key': {'transaction_count': 1}, 'name': 'transaction_count_1'}, 
+            {'v': 2, 'key': {'transaction_count': 1, 'transactions': 1}, 'name': 'transaction_count_1_transactions_1'}
+        ], 
+    'transactions': 
+        [
+            {'v': 2, 'key': {'_id': 1}, 'name': '_id_'}, 
+            {'v': 2, 'key': {'_id': 1}, 'name': '_id_'}, 
+            {'v': 2, 'key': {'birthdate': 1, 'active': 1}, 'name': 'birthdate_1_active_1'}, 
+            {'v': 2, 'key': {'username': 1}, 'name': 'username_1'}, 
+            {'v': 2, 'key': {'name': 1}, 'name': 'name_1'}, 
+            {'v': 2, 'key': {'_id': 1}, 'name': '_id_'}, 
+            {'v': 2, 'key': {'account_id': 1}, 'name': 'account_id_1'}, 
+            {'v': 2, 'key': {'transaction_count': 1}, 'name': 'transaction_count_1'}, 
+            {'v': 2, 'key': {'transaction_count': 1, 'transactions': 1}, 'name': 'transaction_count_1_transactions_1'}
+        ]
+}
+
+
+
+
+from pymongo import MongoClient
+import json
+client = MongoClient("mongodb+srv://saravanan:BFK8zXdhUBvZ3FFN@kumbcluster.l6whs.mongodb.net/kumbCluster")
+import time
+
+def getCollectionNames(dbase):
+    database = dbase
+    colls = client[database]
+    collections = []
+    for coll in colls.list_collection_names():
+        collections.append(coll)
+    return collections
+
+def getIdxDetails(dbName,collectionName):
+    collWithIndex = {}
+    idx_details_list = []
+    for coll in range(len(collectionName)):
+        cName = collectionName[coll]
+        for idx in client[dbName][cName].list_indexes():
+            print(idx)
+            time.sleep(1)
+            idxs = eval(json.dumps(idx))
+        idx_details_list.append(idxs)
+        collWithIndex[cName] = idx_details_list
+    return collWithIndex
+
+def main(db,collections):
+    if(db == '' and collections == ''):
+        return 'Need to specify the schema name to get the index details'
+    elif(collections == ''):
+        collection = getCollectionNames(db)
+        return getIdxDetails(db,collection)
+    else:
+        collection = [collections]
+        return getIdxDetails(db,collection)
+
+    
+# db = "sample_analytics"
+# collName = "customers"
+db = 'sample_analytics'
+collName = ''
+detail = main(db, collName)
+
+print((detail))
+
+
+
+# for i,j in main(db, collName).items():
+#     print(f"collection => {i} ,  indexes are - {j['name']}")

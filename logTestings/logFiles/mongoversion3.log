@@ -1,0 +1,26 @@
+2022-02-16T09:47:19.910+0530 I CONTROL  [main] machdep.cpu.extfeatures unavailable
+2022-02-16T09:47:19.918+0530 I CONTROL  [initandlisten] MongoDB starting : pid=4886 port=27018 dbpath=/Users/saravanan/mongo/serverVersion3/data 64-bit host=mac-at-tek
+2022-02-16T09:47:19.918+0530 I CONTROL  [initandlisten] db version v3.4.24
+2022-02-16T09:47:19.918+0530 I CONTROL  [initandlisten] git version: 865b4f6a96d0f5425e39a18337105f33e8db504d
+2022-02-16T09:47:19.918+0530 I CONTROL  [initandlisten] allocator: system
+2022-02-16T09:47:19.918+0530 I CONTROL  [initandlisten] modules: none
+2022-02-16T09:47:19.918+0530 I CONTROL  [initandlisten] build environment:
+2022-02-16T09:47:19.918+0530 I CONTROL  [initandlisten]     distarch: x86_64
+2022-02-16T09:47:19.918+0530 I CONTROL  [initandlisten]     target_arch: x86_64
+2022-02-16T09:47:19.918+0530 I CONTROL  [initandlisten] options: { net: { port: 27018 }, processManagement: { fork: true }, storage: { dbPath: "/Users/saravanan/mongo/serverVersion3/data" }, systemLog: { destination: "file", path: "/Users/saravanan/mongo/serverVersion3/data/mongod.log" } }
+2022-02-16T09:47:19.919+0530 I -        [initandlisten] Detected data files in /Users/saravanan/mongo/serverVersion3/data created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2022-02-16T09:47:19.919+0530 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=7680M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),verbose=(recovery_progress),
+2022-02-16T09:47:20.045+0530 I STORAGE  [initandlisten] WiredTiger message [1644985040:45319][4886:0x205d61600], txn-recover: Main recovery loop: starting at 1/34560
+2022-02-16T09:47:20.101+0530 I STORAGE  [initandlisten] WiredTiger message [1644985040:101099][4886:0x205d61600], txn-recover: Recovering log 1 through 2
+2022-02-16T09:47:20.150+0530 I STORAGE  [initandlisten] WiredTiger message [1644985040:150049][4886:0x205d61600], txn-recover: Recovering log 2 through 2
+2022-02-16T09:47:20.409+0530 I CONTROL  [initandlisten] 
+2022-02-16T09:47:20.409+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2022-02-16T09:47:20.409+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2022-02-16T09:47:20.409+0530 I CONTROL  [initandlisten] 
+2022-02-16T09:47:20.412+0530 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/Users/saravanan/mongo/serverVersion3/data/diagnostic.data'
+2022-02-16T09:47:20.412+0530 I NETWORK  [thread1] waiting for connections on port 27018
+2022-02-16T09:47:56.445+0530 I NETWORK  [thread1] connection accepted from 127.0.0.1:51204 #1 (1 connection now open)
+2022-02-16T09:47:56.446+0530 I NETWORK  [conn1] received client metadata from 127.0.0.1:51204 conn1: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.24" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "21.2.0" } }
+2022-02-16T09:48:03.519+0530 I -        [conn1] Creating profile collection: admin.system.profile
+2022-02-16T09:48:09.802+0530 I COMMAND  [conn1] command admin.test appName: "MongoDB Shell" command: insert { insert: "test", documents: 2, ordered: true } ninserted:2 keysInserted:2 numYields:0 reslen:29 locks:{ Global: { acquireCount: { r: 3, w: 3 } }, Database: { acquireCount: { W: 3 } }, Collection: { acquireCount: { w: 2 } } } protocol:op_command 118ms
+2022-02-16T09:48:53.694+0530 I COMMAND  [conn1] CMD: drop admin.test
