@@ -4,3 +4,12 @@
 **/lib/
 */lib/
 
+mongo-py-env/test_db_dump/*
+**/*dump*/
+
+*/test/app
+*/test/static
+*/test/migrations
+*/test/templates
+
+
